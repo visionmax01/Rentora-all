@@ -32,8 +32,13 @@ const app = new Hono();
 app.use(logger());
 app.use(secureHeaders());
 app.use(prettyJSON());
+// Parse CORS origins from env (comma-separated)
+const corsOrigins = process.env.CORS_ORIGIN 
+  ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
+  : ['http://localhost:3000', 'http://localhost:3003'];
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: corsOrigins,
   credentials: true,
 }));
 app.use(timeout(30000)); // 30s timeout

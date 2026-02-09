@@ -276,19 +276,40 @@ services:
       - rentora-network
 
   # ============================================
-  # Frontend Next.js Application
+  # Frontend User/Provider Portal
   # ============================================
-  frontend:
+  frontend-user:
     build:
       context: .
-      dockerfile: apps/frontend/Dockerfile
-    container_name: rentora-frontend
+      dockerfile: apps/frontend-user/Dockerfile
+    container_name: rentora-frontend-user
     restart: unless-stopped
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:3001
       NEXT_PUBLIC_MINIO_URL: http://localhost:9000
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
     ports:
       - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - rentora-network
+
+  # ============================================
+  # Frontend Admin Portal
+  # ============================================
+  frontend-admin:
+    build:
+      context: .
+      dockerfile: apps/frontend-admin/Dockerfile
+    container_name: rentora-frontend-admin
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+      NEXT_PUBLIC_MINIO_URL: http://localhost:9000
+      NEXT_PUBLIC_APP_URL: http://localhost:3003
+    ports:
+      - "3003:3003"
     depends_on:
       - backend
     networks:

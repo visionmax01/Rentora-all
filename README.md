@@ -59,7 +59,8 @@ A comprehensive rental and marketplace platform replicating the features of rent
 ```
 rentora-platform/
 ├── apps/
-│   ├── frontend/          # Next.js frontend application
+│   ├── frontend-user/     # User/Provider Portal (Next.js)
+│   ├── frontend-admin/    # Admin Portal (Next.js)
 │   └── backend/           # Hono + Bun API server
 ├── packages/
 │   ├── database/          # Prisma schema and client
@@ -68,6 +69,33 @@ rentora-platform/
 ├── docker-compose.yml     # All services orchestration
 └── README.md
 ```
+
+## Frontend Applications
+
+### 1. User/Provider Portal (`apps/frontend-user`)
+- **Port**: 3000
+- **URL**: http://localhost:3000
+- **Purpose**: Main website for users and service providers
+- **Features**:
+  - Property search and booking
+  - Service booking
+  - Marketplace browsing
+  - User profiles and dashboards
+  - Host dashboard for property owners
+  - Provider dashboard for service professionals
+
+### 2. Admin Portal (`apps/frontend-admin`)
+- **Port**: 3003
+- **URL**: http://localhost:3003
+- **Purpose**: Administrative interface for platform management
+- **Features**:
+  - Dashboard with analytics and charts
+  - User management
+  - Property verification and management
+  - Services management
+  - Marketplace item moderation
+  - Booking oversight
+  - System settings
 
 ## Getting Started
 
@@ -105,13 +133,14 @@ docker-compose exec backend bun run db:seed
 ```
 
 6. Access the applications:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:3001
-   - PGAdmin: http://localhost:5050
-   - Grafana: http://localhost:3001
-   - Bull Board: http://localhost:3002
-   - Typesense: http://localhost:8108
-   - MinIO: http://localhost:9000
+   - **User/Provider Portal**: http://localhost:3000
+   - **Admin Portal**: http://localhost:3003
+   - **Backend API**: http://localhost:3001
+   - **PGAdmin**: http://localhost:5050
+   - **Grafana**: http://localhost:3001
+   - **Bull Board**: http://localhost:3002
+   - **Typesense**: http://localhost:8108
+   - **MinIO**: http://localhost:9000
 
 ### Local Development
 
@@ -138,11 +167,22 @@ cd apps/backend
 bun run dev
 ```
 
-5. Start frontend:
+5. Start User/Provider Portal:
 ```bash
-cd apps/frontend
+cd apps/frontend-user
 npm run dev
 ```
+
+6. Start Admin Portal (in a new terminal):
+```bash
+cd apps/frontend-admin
+npm run dev
+```
+
+**Access Points:**
+- User Portal: http://localhost:3000
+- Admin Portal: http://localhost:3003
+- API: http://localhost:3001
 
 ## API Documentation
 
