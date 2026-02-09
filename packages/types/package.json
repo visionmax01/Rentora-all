@@ -1,0 +1,19 @@
+{
+  "name": "@rentora/types",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "setup:schema": "tsx ./src/typesense/schema.ts"
+  },
+  "dependencies": {
+    "typesense": "^1.8.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "tsx": "^4.11.0"
+  }
+}

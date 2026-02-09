@@ -1,0 +1,37 @@
+{
+  "name": "@rentora/backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "build": "tsc",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "cd ../../packages/database && bun run migrate"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.0",
+    "@prisma/client": "^5.15.0",
+    "@rentora/database": "workspace:*",
+    "@rentora/types": "workspace:*",
+    "bcryptjs": "^2.4.3",
+    "bullmq": "^5.7.0",
+    "hono": "^4.4.0",
+    "ioredis": "^5.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "minio": "^8.0.0",
+    "typesense": "^1.8.0",
+    "uuid": "^9.0.0",
+    "zod": "^3.23.0",
+    "@hono/prometheus": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.8",
+    "bun-types": "latest",
+    "typescript": "^5.4.0"
+  }
+}
